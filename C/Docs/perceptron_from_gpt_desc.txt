@@ -1,0 +1,25 @@
+A single-layer perceptron is a foundational artificial neural network model capable of learning linearly separable patterns, such as those exhibited by an AND gate. Its architecture consists of an input layer, an output layer with a single neuron, and no hidden layers.
+Components:
+Inputs:
+Represented by numerical values (e.g., 0 or 1 for binary inputs like an AND gate).
+Weights:
+Numerical values associated with each input, representing the strength of its connection to the neuron.
+Bias:
+A constant value added to the weighted sum, allowing the decision boundary to be shifted.
+Summation Function:
+Calculates the weighted sum of inputs and the bias.
+Activation Function:
+A step function (or Heaviside step function) is typically used, outputting 1 if the weighted sum exceeds a threshold and 0 otherwise.
+Learning Process (Perceptron Learning Rule):
+The perceptron learns by adjusting its weights and bias through an iterative process. For a given training example:
+Calculate Output:
+The perceptron processes the input and produces an output based on the current weights and bias.
+Compare to Target:
+The calculated output is compared to the desired target output for that input.
+Adjust Weights and Bias:
+If the output is incorrect, the weights and bias are updated using the following rules:
+Weight Update: new_weight = old_weight + learning_rate * (target - output) * input
+Bias Update: new_bias = old_bias + learning_rate * (target - output)
+Where learning_rate is a small positive constant controlling the step size of adjustments.
+AND Gate Example:
+For an AND gate, the perceptron learns to classify inputs (0,0), (0,1), (1,0) as 0 and (1,1) as 1. The perceptron learning rule iteratively adjusts the weights and bias until it correctly classifies all AND gate inputs, demonstrating its ability to learn linearly separable patterns.
