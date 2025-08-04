@@ -1,0 +1,43 @@
+C:\Projects\aethero\C\karnigan>git add -A 
+
+C:\Projects\aethero\C\karnigan>git commit -m "Use cat2pipe.txt " 
+[initial 693130b] Use cat2pipe.txt
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+ create mode 100644 C/karnigan/type
+
+C:\Projects\aethero\C\karnigan>git fetch origin 
+
+C:\Projects\aethero\C\karnigan>git merge -X theirs 
+Already up to date.
+
+C:\Projects\aethero\C\karnigan>git commit -m "merged theirs" 
+On branch initial
+Your branch is ahead of 'origin/initial' by 1 commit.
+ (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+ (use "git add <file>..." to update what will be committed)
+ (use "git restore <file>..." to discard changes in working directory)
+	modified: type
+
+no changes added to commit (use "git add" and/or "git commit -a")
+branch 'initial' set up to track 'origin/initial'.
+
+
+Input symbols: 847, Output Chars: 713, Spaces: 98, Tabs: 1
+Words: 106, Lines: 25
+
+Word lengths from 1 to 20+:
+( 1)[ 6] ( 2)[21] ( 3)[ 6] ( 4)[19] ( 5)[10] ( 6)[17] ( 7)[18] ( 8)[ 5] ( 9)[ 4] (10)[ 7] 
+(11)[ 0] (12)[11] (13)[ 0] (14)[ 1] (15)[ 2] (16)[ 1] (17)[ 1] (18)[ 0] (19)[ 0] (20)[ 5] 
+Words lengths counted: 134
+
+A-z Frequencies from A(0) to ?(63):
+(  A)[  2] (  B)[  0] (  C)[ 12] (  D)[  0] (  E)[  0] (  F)[  0] (  G)[  0] (  H)[  0] 
+(  I)[  0] (  J)[  0] (  K)[  0] (  L)[  0] (  M)[  0] (  N)[  0] (  O)[  1] (  P)[  5] 
+(  Q)[  0] (  R)[  0] (  S)[  0] (  T)[  0] (  U)[  2] (  V)[  0] (  W)[  0] (  X)[  1] 
+(  Y)[  1] (  Z)[  0] (  [)[  1] (  \)[ 20] (  ])[  1] (  ^)[  0] (  _)[  0] (  `)[  0] 
+(  a)[ 48] (  b)[  7] (  c)[ 27] (  d)[ 25] (  e)[ 58] (  f)[  7] (  g)[ 27] (  h)[ 19] 
+(  i)[ 64] (  j)[  5] (  k)[  8] (  l)[ 15] (  m)[ 22] (  n)[ 36] (  o)[ 42] (  p)[ 11] 
+(  q)[  0] (  r)[ 40] (  s)[ 28] (  t)[ 63] (  u)[ 11] (  v)[  0] (  w)[  3] (  x)[  2] 
+(  y)[  6] (  z)[  0] (  {)[  0] (  |)[  0] (  })[  0] (  ~)[  0] (  )[  0] (  €)[  0] 

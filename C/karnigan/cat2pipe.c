@@ -1,19 +1,20 @@
 #include <stdio.h>
-/* --- v2 Word length and Character frequency histograms --- */
+/* --- v3 Word length and Character frequency histograms --- */
 /* Use $ cat cat2text.txt | ./a.out                          */
 /* Use > type cat2pipe.txt | a.exe                           */
 
 #define CSPACE ' '
 #define CTAB '\t'
 #define CNEW '\n'
+#define CRET '\r'
 #define MAXCVI 20
 #define MAXFRQ 64
 #define FINALCHAR '\b'
 #define FIRSTLETTER 'A'
 
-long cnt, cc, nn, ss, tt, cw, cwi;
+long cnt, cc, nn, ss, tt, cw, cwi, ccc;
 int c, i, j, k, charid, longspaces, inword, words;
-int nwords[MAXCVI], nchars[MAXFRQ];
+int nwords[MAXCVI+1], nchars[MAXFRQ];
 char str[2];
 
 void main() {
@@ -38,7 +39,7 @@ void main() {
       }
     }
 
-    else if(c == CNEW){
+    else if(c == CNEW || c == CRET){
       ++nn;
       /* C++ style comments are not allowed in ISO C90 // printf("%ld", nn); */
       putchar(c);
@@ -60,12 +61,12 @@ void main() {
       }
     }
 
-    if(cwi > MAXCVI) {
-      cwi = MAXCVI;
-    }
-
     if(inword !=1 && cwi > 0 || c == EOF) {
-      ++nwords[cwi];
+      if(cwi > MAXCVI) {
+        ++nwords[MAXCVI];
+      } else {
+        ++nwords[cwi];
+      }
     }
 
   }
@@ -76,15 +77,16 @@ void main() {
   printf("Words: %ld, Lines: %ld", cw, nn);
   printf("\n");
 
-  printf("\nWord lengths from 1 to %d:", MAXCVI + 1);
-  for(i = 0; i < (MAXCVI / 10); ++i){
+  printf("\nWord lengths from 1 to %d+:", MAXCVI);
+  for(i = 0; i < ((MAXCVI) / 10); ++i){
     printf("\n");
-    for(j = 0; j < 10; ++j){
+    for(j = 1; j < 11; ++j){
       k = i * 10 + j;
       printf("(%2d)[%2d] ",k, nwords[k]);
+      ccc = ccc + nwords[k];
     }
   }
-  printf(" %2d+[%2d]\n", MAXCVI, nwords[MAXCVI]);
+  printf("\nWords lengths counted: %d\n", ccc);
 
   printf("\nA-z Frequencies from A(0) to ?(%d):\n", MAXFRQ - 1);
   for(i = 0; i < (MAXFRQ / 8); ++i){
