@@ -1,6 +1,7 @@
 #include <stdio.h>
-/* Use $ cat cat2text.txt | ./cat2pipe.out */
-/* v2 Word length and Character frequency histograms */
+/* --- v2 Word length and Character frequency histograms --- */
+/* Use $ cat cat2text.txt | ./a.out                          */
+/* Use > type cat2pipe.txt | a.exe                           */
 
 #define CSPACE ' '
 #define CTAB '\t'
