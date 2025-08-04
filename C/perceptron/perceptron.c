@@ -3,7 +3,7 @@
 #include <time.h>
 
 /*
-## This example demonstrates a basic single-layer 
+## This example demonstrates a basic single-layer
 ## perceptron capable of learning linearly separable patterns like an AND gate.
 1. Perceptron Structure:
         A perceptron typically has:
@@ -66,8 +66,8 @@ void train(Perceptron* p, double inputs[][2], int outputs[], int num_samples, in
             int error = desired_output - predicted_output;
 
             /*
-                Update weights and bias
-                */
+            Update weights and bias
+            */
             p->weights[0] += p->learning_rate * error * x1;
             p->weights[1] += p->learning_rate * error * x2;
             p->bias += p->learning_rate * error;
@@ -100,13 +100,11 @@ int main() {
     int num_samples = 4;
     int epochs = 100;
 
-    printf("Initial Weights: w1=%.2f, w2=%.2f, bias=%.2f\n", my_perceptron.weights[0],
-           my_perceptron.weights[1], my_perceptron.bias);
+    printf("Initial Weights: w1=%.2f, w2=%.2f, bias=%.2f\n", my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.bias);
 
     train(&my_perceptron, inputs, outputs, num_samples, epochs);
 
-    printf("\nFinal Weights: w1=%.2f, w2=%.2f, bias=%.2f\n", my_perceptron.weights[0],
-           my_perceptron.weights[1], my_perceptron.bias);
+    printf("\nFinal Weights: w1=%.2f, w2=%.2f, bias=%.2f\n", my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.bias);
 
     /*
     Test the trained perceptron
