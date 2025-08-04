@@ -1,0 +1,59 @@
+In the context of Linux, an event loop is a programming construct that provides a mechanism 
+for handling asynchronous events efficiently. It is a central component in many applications, 
+especially those dealing with I/O operations, network communication, or graphical user interfaces.
+ How it works:
+	Event Queue:
+The event loop maintains an event queue, which stores incoming events until they can be processed.
+	Event Provider:
+It interacts with an "event provider" (often the operating system's I/O multiplexing mechanisms 
+like epoll on Linux) to detect when events occur.
+	Blocking and Dispatching:
+The event loop typically blocks until an event is detected. Once an event arrives, it is 
+retrieved from the queue and dispatched to the appropriate event handler or callback function.
+	Asynchronous Nature:
+The event loop operates asynchronously with the message originator. This means that while 
+an event handler is processing an event, the event loop can continue to monitor for new events 
+without blocking the entire application. 
+Key Libraries and Concepts in Linux:
+	epoll:
+On Linux, epoll is a system call that provides a highly efficient way to monitor multiple 
+file descriptors for I/O readiness, forming the basis for many event loop implementations.
+	libevent and libuv:
+These are popular cross-platform libraries that provide asynchronous event notification 
+capabilities, often built upon epoll on Linux. They simplify the development of event-driven 
+applications by abstracting away the complexities of low-level I/O operations.
+	Non-blocking I/O:
+Event loops are often used in conjunction with non-blocking I/O, where I/O operations 
+do not block the execution of the program while waiting for data.
+	Callbacks:
+Event loops rely heavily on callbacks, which are functions that are executed when 
+a specific event occurs.
+ Benefits:
+	Performance:
+Event loops enable efficient handling of many concurrent connections or events within 
+a single thread, improving scalability and performance, especially in network servers.
+	Responsiveness:
+By not blocking the main thread, event loops ensure that applications remain responsive 
+to user interactions or other events.
+	Resource Efficiency:
+They can be more resource-efficient than traditional multi-threaded approaches for 
+certain types of workloads.
+
+
+Input symbols: 2338, Output Chars: 1959, Spaces: 311, Tabs: 11
+Words: 334, Lines: 54
+
+Word lengths from 1 to 20+:
+( 1)[ 7] ( 2)[46] ( 3)[45] ( 4)[41] ( 5)[45] ( 6)[30] ( 7)[23] ( 8)[21] ( 9)[22] (10)[14] 
+(11)[14] (12)[17] (13)[ 2] (14)[ 4] (15)[ 1] (16)[ 1] (17)[ 0] (18)[ 1] (19)[ 0] (20)[ 0] 
+Words lengths counted: 334
+
+A-z Frequencies from A(0) to ?(63):
+(  A)[  1] (  B)[  3] (  C)[  2] (  D)[  1] (  E)[  6] (  F)[  0] (  G)[  0] (  H)[  1] 
+(  I)[ 10] (  J)[  0] (  K)[  1] (  L)[  6] (  M)[  0] (  N)[  2] (  O)[  9] (  P)[  2] 
+(  Q)[  1] (  R)[  2] (  S)[  0] (  T)[  7] (  U)[  0] (  V)[  0] (  W)[  0] (  X)[  0] 
+(  Y)[  0] (  Z)[  0] (  [)[  0] (  \)[  0] (  ])[  0] (  ^)[  0] (  _)[  0] (  `)[  0] 
+(  a)[124] (  b)[ 22] (  c)[ 87] (  d)[ 36] (  e)[231] (  f)[ 38] (  g)[ 25] (  h)[ 65] 
+(  i)[151] (  j)[  1] (  k)[ 15] (  l)[ 86] (  m)[ 38] (  n)[179] (  o)[152] (  p)[ 66] 
+(  q)[  2] (  r)[104] (  s)[107] (  t)[161] (  u)[ 43] (  v)[ 45] (  w)[ 23] (  x)[ 10] 
+(  y)[ 30] (  z)[  0] (  {)[  0] (  |)[  0] (  })[  0] (  ~)[  0] (  )[  0] (  €)[  0] 
