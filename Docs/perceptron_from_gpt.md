@@ -11,7 +11,8 @@ A basic example of a perceptron implementation in C involves defining the percep
 2. Activation Function:
 	A common choice for a simple perceptron is a step function (or sign function).
 
-### C
+### C code
+
 ```c
 int activation_function(double sum, double threshold) {
     if (sum >= threshold) {
@@ -25,7 +26,8 @@ int activation_function(double sum, double threshold) {
 3. Training Algorithm (Perceptron Learning Rule):
 	The perceptron learns by adjusting its weights and bias based on the error between its predicted output and the desired output.
 
-### C
+### C code
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
