@@ -13,7 +13,7 @@
 #define FIRSTLETTER 'A'
 
 long cnt, cc, nn, ss, tt, cw, cwi, ccc;
-int c, i, j, k, charid, longspaces, inword, words;
+int c, i, j, k, charid, longspaces, inword, words, addlastword;
 int nwords[MAXCVI+1], nchars[MAXFRQ];
 char str[2];
 
@@ -55,13 +55,15 @@ void main() {
       if(inword != 1) {
         ++cw;
         inword = 1;
+		addlastword = 1;
         cwi = 1;
       } else {
         ++cwi;
       }
     }
 
-    if(inword !=1 && cwi > 0 || c == EOF) {
+    if(addlastword == 1 && inword !=1 && cwi > 0 || c == EOF) {
+      addlastword = 0;
       if(cwi > MAXCVI) {
         ++nwords[MAXCVI];
       } else {
