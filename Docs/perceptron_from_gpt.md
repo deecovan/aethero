@@ -1,4 +1,4 @@
-# perceptron c example
+# Perceptron C example
 
 A basic example of a perceptron implementation in C involves defining the perceptron's structure, its activation function, and the learning algorithm for training.
 
