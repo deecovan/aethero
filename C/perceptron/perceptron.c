@@ -20,7 +20,8 @@
 /*
 Define a simple perceptron structure
 */
-typedef struct {
+typedef struct
+{
     /*
     For two inputs (x1, x2)
     */
@@ -33,7 +34,8 @@ typedef struct {
 /*
 Initialize the perceptron with random weights and given parameters
 */
-void init_perceptron(Perceptron* p, double lr, double th) {
+void init_perceptron(Perceptron *p, double lr, double th)
+{
     srand(time(NULL));                         /* Seed for random numbers */
     p->weights[0] = (double)rand() / RAND_MAX; /* Random weight for x1 */
     p->weights[1] = (double)rand() / RAND_MAX; /* Random weight for x2 */
@@ -45,7 +47,8 @@ void init_perceptron(Perceptron* p, double lr, double th) {
 /*
 Predict the output for given inputs
 */
-int predict(Perceptron* p, double x1, double x2) {
+int predict(Perceptron *p, double x1, double x2)
+{
     double sum = (x1 * p->weights[0]) + (x2 * p->weights[1]) + p->bias;
     return (sum >= p->threshold) ? 1 : 0; /* Step activation function */
 }
@@ -53,11 +56,14 @@ int predict(Perceptron* p, double x1, double x2) {
 /*
 Train the perceptron
 */
-void train(Perceptron* p, double inputs[][2], int outputs[], int num_samples, int epochs) {
+void train(Perceptron *p, double inputs[][2], int outputs[], int num_samples, int epochs)
+{
     int i, epoch;
-    for (epoch = 0; epoch < epochs; epoch++) {
+    for (epoch = 0; epoch < epochs; epoch++)
+    {
         int total_error = 0;
-        for (i = 0; i < num_samples; i++) {
+        for (i = 0; i < num_samples; i++)
+        {
             double x1 = inputs[i][0];
             double x2 = inputs[i][1];
             int desired_output = outputs[i];
@@ -75,14 +81,16 @@ void train(Perceptron* p, double inputs[][2], int outputs[], int num_samples, in
             total_error += abs(error);
         }
         printf("Epoch %d, Total Error: %d\n", epoch + 1, total_error);
-        if (total_error == 0) {
+        if (total_error == 0)
+        {
             printf("Training converged!\n");
             break;
         }
     }
 }
 
-int main() {
+int main()
+{
     Perceptron my_perceptron;
     /*
     Learning rate 0.1, threshold 0.5
@@ -92,7 +100,7 @@ int main() {
     /*
     Example data for an AND gate
     */
-    double inputs[][2] = {{0, 0}, {0, 1}, {1, 0}, {1, 1}};
+    double inputs[][3] = {{0, 0, 0}, {0, 1, 0}, {1, 0, 0}, {1, 1, 0}, {0, 0, 1}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
     int outputs[] = {0, 0, 0, 1};
     /*
     Expected outputs for AND gate
@@ -100,11 +108,13 @@ int main() {
     int num_samples = 4;
     int epochs = 100;
 
-    printf("Initial Weights: w1=%.2f, w2=%.2f, bias=%.2f\n", my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.bias);
+    printf("Initial Weights: w1=%.2f, w2=%.2f, bias=%.2f\n",
+           my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.bias);
 
     train(&my_perceptron, inputs, outputs, num_samples, epochs);
 
-    printf("\nFinal Weights: w1=%.2f, w2=%.2f, bias=%.2f\n", my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.bias);
+    printf("\nFinal Weights: w1=%.2f, w2=%.2f, bias=%.2f\n",
+           my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.bias);
 
     /*
     Test the trained perceptron
