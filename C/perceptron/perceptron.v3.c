@@ -38,7 +38,7 @@ void init_perceptron(Perceptron *p, double lr, double th)
     srand(time(NULL));                                 /* Seed for random numbers */
     p->weights[0] = (double)rand() / RAND_MAX;         /* Random weight for x1 */
     p->weights[1] = (double)rand() / RAND_MAX;         /* AND Random weight for x2 */
-    p->weights[2] = (double)(rand()) * 2.0 / RAND_MAX; /* OR Random weight for x3 */
+    p->weights[2] = (double)(rand() * 2.0) / RAND_MAX; /* OR Random weight for x3 */
     p->bias = (double)rand() / RAND_MAX;               /* Random bias */
     p->learning_rate = lr;
     p->threshold = th;
@@ -83,7 +83,7 @@ void train(Perceptron *p, double inputs[][3], int outputs[], int num_samples, in
             */
             p->weights[0] += p->learning_rate * error * x1;
             p->weights[1] += p->learning_rate * error * x2;
-            p->weights[2] += p->learning_rate * error * x3;
+            p->weights[2] += p->learning_rate * error * 2 * x3;
             p->bias += p->learning_rate * error;
 
             total_error += abs(error);
@@ -101,11 +101,11 @@ int main()
 {
     Perceptron my_perceptron;
     /*
-    ## Learning rate 0.05, Threshold 0.75.
+    ## Learning rate 0.1, Threshold 0.5.
     ## Initialize the perceptron with a learning rate and threshold.
     ## The learning rate controls how much the weights are adjusted during training,
     */
-    init_perceptron(&my_perceptron, 0.05, 0.75);
+    init_perceptron(&my_perceptron, 0.1, 0.5);
 
     /*
     ## Example data for an AND gate.
@@ -113,14 +113,14 @@ int main()
     ## and the outputs are the expected results for the AND operation.
     */
     double inputs[][3] = {{0, 0, 0}, {0, 1, 0}, {1, 0, 0}, {1, 1, 0}, {0, 0, 1}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
-    int outputs[] = {0, 0, 0, 1};
+    int outputs[] = {0, 0, 0, 1, 1, 1, 1, 1};
     /*
     ## Expected outputs for AND gate.
     ## The outputs are binary values representing the result of the AND operation
     ## for the corresponding inputs.
     */
-    int num_samples = 4;
-    int epochs = 100;
+    int num_samples = 10;
+    int epochs = 1000;
 
     printf("Initial Weights: w1=%.2f, w2=%.2f, w3=%.2f, bias=%.2f\n",
            my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
