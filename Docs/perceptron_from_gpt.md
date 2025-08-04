@@ -12,7 +12,7 @@ A basic example of a perceptron implementation in C involves defining the percep
 	A common choice for a simple perceptron is a step function (or sign function).
 
 ### C
-```
+```c
 int activation_function(double sum, double threshold) {
     if (sum >= threshold) {
         return 1; // "Fires" or activates
@@ -26,7 +26,7 @@ int activation_function(double sum, double threshold) {
 	The perceptron learns by adjusting its weights and bias based on the error between its predicted output and the desired output.
 
 ### C
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
