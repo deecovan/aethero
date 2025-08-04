@@ -1,0 +1,40 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.dll
+*.lib
+*.a
+*.so
+*.gch
+*.dSYM/
+build/
+bin/
+obj/
+
+# Temporary files
+*~
+*.bak
+*.swp
+*.tmp
+*.log
+*.swo
+
+# Visual Studio Code specific files
+.vscode/
+.history/
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Debugging files
+*.pdb
+*.ilk

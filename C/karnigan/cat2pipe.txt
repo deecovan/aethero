@@ -1,0 +1,10 @@
+Tab	than two tabs 		than new line
+Now Two new lines
+
+Three tabs		Three spaces   Newline
+Eight spaces        Tab Space Tab Space	 	 Four New lines
+
+
+
+
+EOF
