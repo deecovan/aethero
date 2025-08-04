@@ -83,7 +83,7 @@ void train(Perceptron *p, double inputs[][3], int outputs[], int num_samples, in
             */
             p->weights[0] += p->learning_rate * error * x1;
             p->weights[1] += p->learning_rate * error * x2;
-            p->weights[2] += p->learning_rate * error * 2 * x3;
+            p->weights[2] += p->learning_rate * error * x3;
             p->bias += p->learning_rate * error;
 
             total_error += abs(error);
@@ -113,16 +113,16 @@ int main()
     ## and the outputs are the expected results for the AND operation.
     */
     double inputs[][3] = {{0, 0, 0}, {0, 1, 0}, {1, 0, 0}, {1, 1, 0}, {0, 0, 1}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
-    int outputs[] = {0, 0, 0, 1, 1, 1, 1, 1};
     /*
     ## Expected outputs for AND gate.
     ## The outputs are binary values representing the result of the AND operation
     ## for the corresponding inputs.
     */
-    int num_samples = 10;
+    int outputs[] = {0, 0, 0, 1, 1, 1, 1, 1};
+    int num_samples = 8;
     int epochs = 1000;
 
-    printf("Initial Weights: w1=%.2f, w2=%.2f, w3=%.2f, bias=%.2f\n",
+    printf("\nInitial Weights: w1=%.2f, w2=%.2f, w3=%.2f, bias=%.2f\n",
            my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
 
     train(&my_perceptron, inputs, outputs, num_samples, epochs);
@@ -135,7 +135,7 @@ int main()
     ## The perceptron is tested with various combinations of inputs to verify its
     ## ability to predict the AND operation correctly.
     */
-    printf("\nTesting Perceptron (AND Gate):\n");
+    printf("Testing Perceptron (AND Gate):\n");
     printf("0 AND 0 OR 0 = %d\n", predict(&my_perceptron, 0, 0, 0));
     printf("0 AND 1 OR 0 = %d\n", predict(&my_perceptron, 0, 1, 0));
     printf("1 AND 0 OR 0 = %d\n", predict(&my_perceptron, 1, 0, 0));
