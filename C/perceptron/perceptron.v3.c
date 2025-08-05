@@ -124,7 +124,7 @@ int main()
     /*
     ## Test the trained perceptron.
     */
-    printf("Testing Perceptron (AND Gate):\n");
+    printf("Testing Perceptron (X1 AND X2 OR X3):\n");
     printf("0 AND 0 OR 0 = %d\n", predict(&my_perceptron, 0, 0, 0));
     printf("0 AND 1 OR 0 = %d\n", predict(&my_perceptron, 0, 1, 0));
     printf("1 AND 0 OR 0 = %d\n", predict(&my_perceptron, 1, 0, 0));
