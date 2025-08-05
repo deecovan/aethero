@@ -87,10 +87,10 @@ void train(Perceptron *p, double inputs[][3], int outputs[], int num_samples, in
 
             total_error += abs(error);
         }
-        printf("Epoch %d, Total Error: %d\n", epoch + 1, total_error);
+        printf("\nEpoch %d, Total Error: %d", epoch + 1, total_error);
         if (total_error == 0)
         {
-            printf("Training converged in epoch %d, iteration %d\n", epoch + 1, i);
+            printf("\n\nTraining converged in epoch %d, iteration %d\n", epoch + 1, i);
             break;
         }
     }
@@ -122,21 +122,20 @@ int main()
     int num_samples = sizeof(outputs) / sizeof(outputs[0]);
     int epochs = 100;
 
-    printf("\nInitial Weights: w1 = %.2f, w2 = %.2f, w3 = %.2f, bias = %.2f\n",
+    printf("\nInitial Weights: X1 = %.2f, X2 = %.2f, X3 = %.2f, bias = %.2f\n",
            my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
 
     train(&my_perceptron, inputs, outputs, num_samples, epochs);
 
-    printf("\nFinal Weights: w1 = %.2f, w2 = %.2f, w3 = %.2f, bias = %.2f\n",
-           my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
-
     /*
     ## Test the trained perceptron.
+    ## Changes in v3.1: threshold must be separate for each predict logical block
     */
-    printf("\nTesting the trained perceptron using logic ANDgate(X1, X2) OR X3:\n");
-
-    /* ## Show Changes in v3.1: threshold must be separate for each predict logical block */
-    printf("Threshhold for ANDgate(X1+X2) = %.2f, for OR(X3) = %.2f\nLearning rate:%.2f\n",
+    printf("\nTesting the trained perceptron using logic ANDgate(X1, X2) OR X3:");
+    printf("\n((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)\n");
+    printf("\nFinal Weights: X1 = %.2f, X2 = %.2f, X3 = %.2f, bias = %.2f\n",
+           my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
+    printf("threshold1 = %.2f, threshold2 = %.2f, learning rate = %.2f\n\n",
            thresholds[0], thresholds[1], learning_rate);
     printf("(0 AND 0) OR 0 = %d\n", predict(&my_perceptron, 0, 0, 0));
     printf("(0 AND 1) OR 0 = %d\n", predict(&my_perceptron, 0, 1, 0));
