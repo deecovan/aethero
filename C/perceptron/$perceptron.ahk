@@ -64,7 +64,7 @@ $^+C::
 			BreakLoop = 0
 			break
 		}
-	Send, "./perceptron.v3.exe" >> "out.file"
+	Send, "a.exe" >> "out.file"
 	Send, {Enter}
 	Sleep, 1000
 	}
