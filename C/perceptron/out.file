@@ -3790,3 +3790,276 @@ Learning rate:0.05
 (0 AND 1) OR 1 = 1
 (1 AND 0) OR 1 = 1
 (1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.51, X3 = 0.52, bias = 0.23
+
+Epoch 1, Total Error: 2
+Epoch 2, Total Error: 1
+Epoch 3, Total Error: 2
+Epoch 4, Total Error: 1
+Epoch 5, Total Error: 0
+
+Training converged in epoch 5, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.28, X2 = 0.31, X3 = 0.62, bias = 0.13
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.16, X3 = 0.61, bias = 0.69
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 3
+Epoch 3, Total Error: 1
+Epoch 4, Total Error: 0
+
+Training converged in epoch 4, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.13, X2 = 0.06, X3 = 0.61, bias = 0.34
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.49, X3 = 0.16, bias = 0.43
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 3
+Epoch 3, Total Error: 2
+Epoch 4, Total Error: 2
+Epoch 5, Total Error: 2
+Epoch 6, Total Error: 2
+Epoch 7, Total Error: 2
+Epoch 8, Total Error: 1
+Epoch 9, Total Error: 0
+
+Training converged in epoch 9, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.13, X2 = 0.14, X3 = 0.51, bias = 0.28
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.15, X3 = 0.25, bias = 0.90
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 3
+Epoch 3, Total Error: 4
+Epoch 4, Total Error: 2
+Epoch 5, Total Error: 2
+Epoch 6, Total Error: 3
+Epoch 7, Total Error: 2
+Epoch 8, Total Error: 2
+Epoch 9, Total Error: 2
+Epoch 10, Total Error: 1
+Epoch 11, Total Error: 0
+
+Training converged in epoch 11, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.08, X2 = 0.05, X3 = 0.40, bias = 0.40
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.48, X3 = 0.80, bias = 0.63
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 2
+Epoch 3, Total Error: 2
+Epoch 4, Total Error: 1
+Epoch 5, Total Error: 1
+Epoch 6, Total Error: 0
+
+Training converged in epoch 6, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.13, X2 = 0.23, X3 = 0.80, bias = 0.18
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.80, X3 = 0.34, bias = 0.37
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 4
+Epoch 3, Total Error: 3
+Epoch 4, Total Error: 1
+Epoch 5, Total Error: 2
+Epoch 6, Total Error: 1
+Epoch 7, Total Error: 2
+Epoch 8, Total Error: 1
+Epoch 9, Total Error: 2
+Epoch 10, Total Error: 0
+
+Training converged in epoch 10, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.18, X2 = 0.35, X3 = 0.69, bias = 0.12
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.46, X3 = 0.43, bias = 0.84
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 3
+Epoch 3, Total Error: 3
+Epoch 4, Total Error: 1
+Epoch 5, Total Error: 2
+Epoch 6, Total Error: 1
+Epoch 7, Total Error: 0
+
+Training converged in epoch 7, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.13, X2 = 0.16, X3 = 0.48, bias = 0.29
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.79, X3 = 0.98, bias = 0.57
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 2
+Epoch 3, Total Error: 1
+Epoch 4, Total Error: 1
+Epoch 5, Total Error: 1
+Epoch 6, Total Error: 1
+Epoch 7, Total Error: 1
+Epoch 8, Total Error: 1
+Epoch 9, Total Error: 0
+
+Training converged in epoch 9, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.18, X2 = 0.39, X3 = 0.98, bias = 0.02
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.12, X3 = 0.52, bias = 0.30
+
+Epoch 1, Total Error: 1
+Epoch 2, Total Error: 0
+
+Training converged in epoch 2, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.23, X2 = 0.12, X3 = 0.52, bias = 0.25
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
+
+Initial Weights: X1 = 0.28, X2 = 0.77, X3 = 0.61, bias = 0.77
+
+Epoch 1, Total Error: 3
+Epoch 2, Total Error: 3
+Epoch 3, Total Error: 2
+Epoch 4, Total Error: 1
+Epoch 5, Total Error: 1
+Epoch 6, Total Error: 1
+Epoch 7, Total Error: 1
+Epoch 8, Total Error: 2
+Epoch 9, Total Error: 1
+Epoch 10, Total Error: 0
+
+Training converged in epoch 10, iteration 8
+
+Testing the trained perceptron using logic ANDgate(X1, X2) OR X3:
+((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+
+Final Weights: X1 = 0.13, X2 = 0.32, X3 = 0.66, bias = 0.12
+threshold1 = 0.50, threshold2 = 0.75, learning rate = 0.05
+
+(0 AND 0) OR 0 = 0
+(0 AND 1) OR 0 = 0
+(1 AND 0) OR 0 = 0
+(1 AND 1) OR 0 = 1
+(0 AND 0) OR 1 = 1
+(0 AND 1) OR 1 = 1
+(1 AND 0) OR 1 = 1
+(1 AND 1) OR 1 = 1
