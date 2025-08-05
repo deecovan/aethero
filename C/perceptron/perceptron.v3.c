@@ -14,11 +14,12 @@ typedef struct
 {
     /*
     ## For THREE inputs (x1, x2, x3) and one bias
+    ## (*) Changes in v3.1 threshold must be separate for each predict logical block 
     */
     double weights[3];
     double bias;
     double learning_rate;
-    double threshold; /* (*) Changes in v3.1 threshold must be separate for each X */
+    double [3]; 
 } Perceptron;
 
 /*
@@ -27,28 +28,32 @@ typedef struct
 ## The random seed is set using the current time to ensure different results on each run.
 ## The weights are initialized to random values between 0 and 1, and the bias is
 */
-void init_perceptron(Perceptron *p, double lr, double th)
+void init_perceptron(Perceptron *p, double lr, double th[])
 {
     srand(time(NULL));                                 /* Seed for random numbers */
     p->weights[0] = (double)rand() / RAND_MAX;         /* Random weight for x1 */
     p->weights[1] = (double)rand() / RAND_MAX;         /* AND Random weight for x2 */
     p->weights[2] = (double)rand() / RAND_MAX;         /* OR Random weight for x3 */
     p->bias = (double)rand() / RAND_MAX;               
-    p->learning_rate = lr;                             
-    p->threshold = th; /* (*) Changes in v3.1 threshold must be separate for each X */
+    p->learning_rate = lr;  
+    /* (*) Changes in v3.1 threshold must be separate for each predict logical block */                           
+    p->threshold[0] = th[0];
+    p->threshold[1] = th[1];
 }
 
-/*
+/* 
+## Main logic function.
 ## Predict the output for given inputs.
 ## The perceptron computes the weighted sum of inputs plus the bias,
 ## and applies a step activation function based on the threshold.
 */
 int predict(Perceptron *p, double x1, double x2, double x3)
 {
-    double sum = (x1 * p->weights[0]) + (x2 * p->weights[1]) + (x3 * p->weights[2]) + p->bias;
+    double ANDgate12 = (x1 * p->weights[0]) + (x2 * p->weights[1]) + p->bias;
+    double ORvalue3  = (x3 * p->weights[2]) + p->bias;
     /* Step activation function */
-    /* (*) Changes in v3.1 threshold must be separate for each X */
-    return (sum >= p->threshold) ? 1 : 0; 
+    /* (*) Changes in v3.1 threshold must be separate for each predict logical block */
+    return ((ANDgate12 >= p->threshold[0])||(ORvalue3 >= p->threshold[1])) ? 1 : 0; 
 }
 
 /*
