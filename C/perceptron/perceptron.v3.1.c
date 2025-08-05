@@ -4,7 +4,15 @@
 
 /*
 ## Version v3.1 with Used pattern "X1 AND X2 OR X3".
-## 1. Removed 2x multiplier from X3 calculations.
+## Modified logic: old pattern was wrong.
+## New predict pattern is: 
+## ((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
+## where (X1 + X2 + bias) > threshold1) is ANDgate(X1, X2)
+## Separate tresholds but one bias.
+## This example selects random values, and this can be changed 
+## so that not just a threshold is triggered, but a threshold 
+## with a minimum bias. Also, X3 block can be expanded 
+## to the expression NORgate(X3, X4)
 */
 
 /*
@@ -14,7 +22,6 @@ typedef struct
 {
     /*
     ## For THREE inputs (x1, x2, x3) and one bias
-    ## Changes in v3.1: threshold must be separate for each predict logical block
     */
     double weights[3];
     double bias;
@@ -24,19 +31,15 @@ typedef struct
 
 /*
 ## Initialize the perceptron with random weights and given parameters.
-## The weights are initialized randomly, and the learning rate and threshold are set.
-## The random seed is set using the current time to ensure different results on each run.
-## The weights are initialized to random values between 0 and 1, and the bias is
 */
 void init_perceptron(Perceptron *p, double lr, double th[])
 {
-    srand(time(NULL));                         /* Seed for random numbers */
-    p->weights[0] = (double)rand() / RAND_MAX; /* Random weight for x1 */
-    p->weights[1] = (double)rand() / RAND_MAX; /* AND Random weight for x2 */
-    p->weights[2] = (double)rand() / RAND_MAX; /* OR Random weight for x3 */
+    srand(time(NULL));
+    p->weights[0] = (double)rand() / RAND_MAX;
+    p->weights[1] = (double)rand() / RAND_MAX;
+    p->weights[2] = (double)rand() / RAND_MAX;
     p->bias = (double)rand() / RAND_MAX;
     p->learning_rate = lr;
-    /* Changes in v3.1: threshold must be separate for each predict logical block */
     p->threshold[0] = th[0];
     p->threshold[1] = th[1];
 }
@@ -100,25 +103,20 @@ int main()
 {
     Perceptron my_perceptron;
     /*
-    ## Learning rate 0.05, Threshold 0.5.
-    ## The learning rate controls how much the weights are adjusted during training,
-    ## Changes in v3.1: threshold must be separate for each predict logical block
-    ## Changes in v3.1 from Learning rate 0.1
+    ## The learning rate controls how much the weights are adjusted during training
     */
     double thresholds[2] = {0.5, 0.75};
-    double learning_rate = 0.05; /* Changed from 0.1 to 0.05 in v3.1 */
+    double learning_rate = 0.05;
     init_perceptron(&my_perceptron, learning_rate, thresholds);
 
     /*
-    ## Example data for an AND gate.
-    ## The inputs are combinations of three binary inputs (x1, x2, x3),
-    ## and the outputs are the expected results for the AND operation.
+    ## Inputs and expected outputs for training and testing.
     */
     double inputs[][3] = {{0, 0, 0}, {0, 1, 0}, {1, 0, 0}, {1, 1, 0}, {0, 0, 1}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
-    /*
-    ## Expected outputs for AND gate.
-    */
     int outputs[] = {0, 0, 0, 1, 1, 1, 1, 1};
+    /*
+    ## Training iterations variables.
+    */
     int num_samples = sizeof(outputs) / sizeof(outputs[0]);
     int epochs = 100;
 
@@ -126,10 +124,9 @@ int main()
            my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
 
     train(&my_perceptron, inputs, outputs, num_samples, epochs);
-
+    
     /*
     ## Test the trained perceptron.
-    ## Changes in v3.1: threshold must be separate for each predict logical block
     */
     printf("\nTesting the trained perceptron using logic ANDgate(X1, X2) OR X3:");
     printf("\n((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)\n");
