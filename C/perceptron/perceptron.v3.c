@@ -3,28 +3,22 @@
 #include <time.h>
 
 /*
-## This example demonstrates a basic single-layer
-## perceptron capable of learning linearly separable patterns like an AND gate.
-## Version v3 with Used pattern "X1 AND X2 OR X3".
-## It initializes weights randomly, trains the perceptron using a simple
-## learning algorithm, and tests it with a set of inputs.
+## Version v3.1 with Used pattern "X1 AND X2 OR X3".
+## 1. Removed 2x multiplier from X3 calculations.
 */
 
 /*
 ## Define a simple perceptron structure.
-## It has three inputs (x1, x2, x3), one bias, weights for each input,
-## a learning rate, and a threshold for activation.
 */
 typedef struct
 {
     /*
     ## For THREE inputs (x1, x2, x3) and one bias
-    ## The perceptron has three weights, one bias, a learning rate, and a threshold
     */
     double weights[3];
     double bias;
     double learning_rate;
-    double threshold;
+    double threshold; /* (*) Changes in v3.1 threshold must be separate for each X */
 } Perceptron;
 
 /*
@@ -38,10 +32,10 @@ void init_perceptron(Perceptron *p, double lr, double th)
     srand(time(NULL));                                 /* Seed for random numbers */
     p->weights[0] = (double)rand() / RAND_MAX;         /* Random weight for x1 */
     p->weights[1] = (double)rand() / RAND_MAX;         /* AND Random weight for x2 */
-    p->weights[2] = (double)(rand() * 2.0) / RAND_MAX; /* OR Random weight for x3 */
-    p->bias = (double)rand() / RAND_MAX;               /* Random bias */
-    p->learning_rate = lr;
-    p->threshold = th;
+    p->weights[2] = (double)rand() / RAND_MAX;         /* OR Random weight for x3 */
+    p->bias = (double)rand() / RAND_MAX;               
+    p->learning_rate = lr;                             
+    p->threshold = th; /* (*) Changes in v3.1 threshold must be separate for each X */
 }
 
 /*
@@ -52,7 +46,9 @@ void init_perceptron(Perceptron *p, double lr, double th)
 int predict(Perceptron *p, double x1, double x2, double x3)
 {
     double sum = (x1 * p->weights[0]) + (x2 * p->weights[1]) + (x3 * p->weights[2]) + p->bias;
-    return (sum >= p->threshold) ? 1 : 0; /* Step activation function */
+    /* Step activation function */
+    /* (*) Changes in v3.1 threshold must be separate for each X */
+    return (sum >= p->threshold) ? 1 : 0; 
 }
 
 /*
@@ -78,8 +74,6 @@ void train(Perceptron *p, double inputs[][3], int outputs[], int num_samples, in
 
             /*
             ## Update weights and bias.
-            ## The weights are adjusted based on the error and the learning rate.
-            ## The bias is also adjusted similarly.
             */
             p->weights[0] += p->learning_rate * error * x1;
             p->weights[1] += p->learning_rate * error * x2;
@@ -101,11 +95,10 @@ int main()
 {
     Perceptron my_perceptron;
     /*
-    ## Learning rate 0.1, Threshold 0.5.
-    ## Initialize the perceptron with a learning rate and threshold.
+    ## Learning rate 0.05, Threshold 0.5.
     ## The learning rate controls how much the weights are adjusted during training,
     */
-    init_perceptron(&my_perceptron, 0.1, 0.5);
+    init_perceptron(&my_perceptron, 0.05, 0.5); /* Changes in v3.1 from Learning rate 0.1 */
 
     /*
     ## Example data for an AND gate.
@@ -115,12 +108,10 @@ int main()
     double inputs[][3] = {{0, 0, 0}, {0, 1, 0}, {1, 0, 0}, {1, 1, 0}, {0, 0, 1}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
     /*
     ## Expected outputs for AND gate.
-    ## The outputs are binary values representing the result of the AND operation
-    ## for the corresponding inputs.
     */
     int outputs[] = {0, 0, 0, 1, 1, 1, 1, 1};
-    int num_samples = 8;
-    int epochs = 1000;
+    int num_samples = 8; /* Really this is sizeof(outputs) */
+    int epochs = 100;
 
     printf("\nInitial Weights: w1=%.2f, w2=%.2f, w3=%.2f, bias=%.2f\n",
            my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
@@ -132,8 +123,6 @@ int main()
 
     /*
     ## Test the trained perceptron.
-    ## The perceptron is tested with various combinations of inputs to verify its
-    ## ability to predict the AND operation correctly.
     */
     printf("Testing Perceptron (AND Gate):\n");
     printf("0 AND 0 OR 0 = %d\n", predict(&my_perceptron, 0, 0, 0));
