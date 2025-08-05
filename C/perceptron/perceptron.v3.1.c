@@ -5,13 +5,13 @@
 /*
 ## Version v3.1 with Used pattern "X1 AND X2 OR X3".
 ## Modified logic: old pattern was wrong.
-## New predict pattern is: 
+## New predict pattern is:
 ## ((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)
 ## where (X1 + X2 + bias) > threshold1) is ANDgate(X1, X2)
 ## Separate tresholds but one bias.
-## This example selects random values, and this can be changed 
-## so that not just a threshold is triggered, but a threshold 
-## with a minimum bias. Also, X3 block can be expanded 
+## This example selects random values, and this can be changed
+## so that not just a threshold is triggered, but a threshold
+## with a minimum bias. Also, X3 block can be expanded
 ## to the expression NORgate(X3, X4)
 */
 
@@ -112,7 +112,8 @@ int main()
     /*
     ## Inputs and expected outputs for training and testing.
     */
-    double inputs[][3] = {{0, 0, 0}, {0, 1, 0}, {1, 0, 0}, {1, 1, 0}, {0, 0, 1}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+    double inputs[][3] = {
+        {0, 0, 0}, {0, 1, 0}, {1, 0, 0}, {1, 1, 0}, {0, 0, 1}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
     int outputs[] = {0, 0, 0, 1, 1, 1, 1, 1};
     /*
     ## Training iterations variables.
@@ -120,18 +121,18 @@ int main()
     int num_samples = sizeof(outputs) / sizeof(outputs[0]);
     int epochs = 100;
 
-    printf("\nInitial Weights: X1 = %.2f, X2 = %.2f, X3 = %.2f, bias = %.2f\n",
-           my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
+    printf("\nInitial Weights: X1 = %.2f, X2 = %.2f, X3 = %.2f, bias = %.2f\n", my_perceptron.weights[0],
+           my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
 
     train(&my_perceptron, inputs, outputs, num_samples, epochs);
-    
+
     /*
     ## Test the trained perceptron.
     */
     printf("\nTesting the trained perceptron using logic ANDgate(X1, X2) OR X3:");
     printf("\n((X1 + X2 + bias) > threshold1) OR ((X3 + bias) > threshold2)\n");
-    printf("\nFinal Weights: X1 = %.2f, X2 = %.2f, X3 = %.2f, bias = %.2f\n",
-           my_perceptron.weights[0], my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
+    printf("\nFinal Weights: X1 = %.2f, X2 = %.2f, X3 = %.2f, bias = %.2f\n", my_perceptron.weights[0],
+           my_perceptron.weights[1], my_perceptron.weights[2], my_perceptron.bias);
     printf("threshold1 = %.2f, threshold2 = %.2f, learning rate = %.2f\n\n",
            thresholds[0], thresholds[1], learning_rate);
     printf("(0 AND 0) OR 0 = %d\n", predict(&my_perceptron, 0, 0, 0));
